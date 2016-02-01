@@ -161,8 +161,19 @@ class MenuController
   end
 
   def delete_entry(entry)
-    @address_book.entries.delete(entry)
-    puts "#{entry.name} has been deleted"
+    system "clear"
+    puts "#{entry.name} is going to be deleted"
+    puts "Are you sure you want this entry?"
+    print "#{entry}"
+    puts "\nYES/NO"
+    answer = gets.chomp
+    if answer == "YES"
+      @address_book.entries.delete(entry)
+      system "clear"
+      puts "Entry has been deleted."
+    else
+      main_menu
+    end
   end
 
   def edit_entry(entry)
